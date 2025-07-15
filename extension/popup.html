@@ -47,9 +47,26 @@
       <button class="btn secondary" onclick="openDashboard()">
         📊 View Dashboard
       </button>
-      <button class="btn secondary" onclick="startTimer()">
+      <button class="btn secondary" onclick="toggleTimer()" id="timerBtn">
         ⏱️ Start Timer
       </button>
+    </div>
+
+    <!-- Timer section -->
+    <div class="timer-section" id="timerSection" style="display: none;">
+      <div class="timer-display">
+        <div class="timer-time" id="timerDisplay">00:00</div>
+        <select id="timerTopic">
+          <option value="quant">Quantitative</option>
+          <option value="verbal">Verbal</option>
+          <option value="ir">Integrated Reasoning</option>
+          <option value="awa">Analytical Writing</option>
+        </select>
+        <div class="timer-controls">
+          <button class="btn small" onclick="resetTimer()">Reset</button>
+          <button class="btn small" onclick="stopAndLog()">Stop & Log</button>
+        </div>
+      </div>
     </div>
 
     <!-- Today's summary -->

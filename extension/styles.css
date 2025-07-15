@@ -112,9 +112,55 @@ body {
   display: none;
   background: #d1fae5;
   color: #065f46;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  font-size: 12px;
   text-align: center;
-  font-size: 13px;
+}
+
+/* Timer styles */
+.timer-section {
+  background: #e0f2fe;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #0891b2;
+}
+
+.timer-display {
+  text-align: center;
+}
+
+.timer-time {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0891b2;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 8px;
   margin-top: 8px;
+}
+
+.timer-controls .btn {
+  flex: 1;
+  margin: 0;
+}
+
+.btn.small {
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+#timerTopic {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 12px;
 }

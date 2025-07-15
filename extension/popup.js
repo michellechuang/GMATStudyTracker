@@ -123,6 +123,66 @@ window.openDashboard = () => {
   chrome.tabs.create({ url: 'http://localhost:5173' });
 };
 
-window.startTimer = () => {
-  chrome.tabs.create({ url: 'http://localhost:5173/#timer' });
+// Timer functionality
+let timerInterval = null;
+let timerSeconds = 0;
+let isTimerRunning = false;
+
+window.toggleTimer = () => {
+  if (isTimerRunning) {
+    stopTimer();
+  } else {
+    startTimerFunction();
+  }
+};
+
+function startTimerFunction() {
+  const timerSection = document.getElementById('timerSection');
+  const timerBtn = document.getElementById('timerBtn');
+  
+  timerSection.style.display = 'block';
+  timerBtn.textContent = '⏸️ Pause Timer';
+  isTimerRunning = true;
+  
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function stopTimer() {
+  const timerBtn = document.getElementById('timerBtn');
+  
+  clearInterval(timerInterval);
+  timerBtn.textContent = '▶️ Resume Timer';
+  isTimerRunning = false;
+}
+
+function updateTimerDisplay() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+  document.getElementById('timerDisplay').textContent = 
+    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+window.resetTimer = () => {
+  clearInterval(timerInterval);
+  timerSeconds = 0;
+  isTimerRunning = false;
+  
+  document.getElementById('timerDisplay').textContent = '00:00';
+  document.getElementById('timerBtn').textContent = '⏱️ Start Timer';
+  document.getElementById('timerSection').style.display = 'none';
+};
+
+window.stopAndLog = () => {
+  if (timerSeconds > 0) {
+    const topic = document.getElementById('timerTopic').value;
+    const minutes = Math.floor(timerSeconds / 60);
+    
+    if (minutes > 0) {
+      tracker.logSession(topic, minutes);
+    }
+  }
+  resetTimer();
 };
