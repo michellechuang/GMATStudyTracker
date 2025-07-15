@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header with streak -->
+    <div class="header">
+      <h2>🎯 GMAT Tracker</h2>
+      <div class="streak" id="streak">🔥 Streak: 0 days</div>
+    </div>
+
+    <!-- Quick log buttons -->
+    <div class="quick-log">
+      <h3>Quick Log Session:</h3>
+      <button class="btn primary" onclick="logSession('quant', 30)">
+        📊 Quant • 30min
+      </button>
+      <button class="btn primary" onclick="logSession('verbal', 45)">
+        📝 Verbal • 45min
+      </button>
+      <button class="btn primary" onclick="logSession('ir', 20)">
+        📈 IR • 20min
+      </button>
+    </div>
+
+    <!-- Custom session form -->
+    <details class="custom-form">
+      <summary>Custom Session</summary>
+      <div class="form-content">
+        <select id="topicSelect">
+          <option value="quant">Quantitative</option>
+          <option value="verbal">Verbal</option>
+          <option value="ir">Integrated Reasoning</option>
+          <option value="awa">Analytical Writing</option>
+        </select>
+        <input type="number" id="timeInput" placeholder="Minutes" min="1" max="300">
+        <input type="number" id="questionsInput" placeholder="Questions (optional)">
+        <button class="btn secondary" onclick="logCustomSession()">Log Session</button>
+      </div>
+    </details>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn secondary" onclick="openDashboard()">
+        📊 View Dashboard
+      </button>
+      <button class="btn secondary" onclick="startTimer()">
+        ⏱️ Start Timer
+      </button>
+    </div>
+
+    <!-- Today's summary -->
+    <div class="summary" id="todaySummary">
+      Today: 0min • 0 questions
+    </div>
+
+    <!-- Success message -->
+    <div class="success-message" id="successMessage"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
